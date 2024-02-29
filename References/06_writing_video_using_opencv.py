@@ -29,7 +29,7 @@ from base64 import b64encode
 """##  <font style="color:black">Download Assets</font>"""
 
 def download_and_unzip(url, save_path):
-    print(f"Downloading and extracting assests....", end="")
+    print("Downloading and extracting assests....", end="")
 
     # Downloading zip file using urllib package.
     urlretrieve(url, save_path)
