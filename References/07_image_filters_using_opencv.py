@@ -2,10 +2,10 @@ import cv2
 import sys
 import numpy
 
-PREVIEW  = 0  # Preview Mode
-BLUR     = 1  # Blurring Filter
+PREVIEW = 0  # Preview Mode
+BLUR = 1  # Blurring Filter
 FEATURES = 2  # Corner Feature Detector
-CANNY    = 3  # Canny Edge Detector
+CANNY = 3  # Canny Edge Detector
 
 feature_params = dict(maxCorners=500, qualityLevel=0.2, minDistance=7, blockSize=5)
 s = 0
@@ -39,8 +39,10 @@ while alive:
         frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         corners = cv2.goodFeaturesToTrack(frame_gray, **feature_params)
         if corners is not None:
-            for x, y in numpy.float32(corners).reshape(-1, 2): #this is fucked up somewhere, can't do features
-                cv2.circle(result, (x, y), 4, (0, 255, 0), 1) # this is also fucked up
+            for x, y in numpy.float32(corners).reshape(
+                -1, 2
+            ):  # this is fucked up somewhere, can't do features
+                cv2.circle(result, (x, y), 4, (0, 255, 0), 1)  # this is also fucked up
 
     cv2.imshow(win_name, result)
 
