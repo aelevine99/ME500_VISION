@@ -5,20 +5,18 @@
 import os
 import sys
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
 
 from zipfile import ZipFile
 from urllib.request import urlretrieve
 
 from IPython.display import HTML
-from matplotlib.animation import FuncAnimation
 
-from IPython.display import YouTubeVideo, display, HTML
+from IPython.display import YouTubeVideo, display
 from base64 import b64encode
 
 def download_and_unzip(url, save_path):
-    print(f"Downloading and extracting assests....", end="")
+    print("Downloading and extracting assests....", end="")
 
     # Downloading zip file using urllib package.
     urlretrieve(url, save_path)

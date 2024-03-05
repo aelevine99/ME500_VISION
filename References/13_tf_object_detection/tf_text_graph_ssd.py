@@ -81,7 +81,7 @@ def fuse_batch_normalization():
             fusedNodes.append(node)
             for i, inpOp in enumerate(targetNode[1:]):
                 if isinstance(inpOp, list):
-                    if not node.input[i] in nodesMap or \
+                    if node.input[i] not in nodesMap or \
                        not checkSubgraph(nodesMap[node.input[i]], inpOp, inputs, fusedNodes):
                         return False
                 else:
@@ -132,7 +132,7 @@ for i in reversed(range(len(graph_def.node))):
     op = graph_def.node[i].op
     name = graph_def.node[i].name
 
-    if (not op in keepOps) or name.startswith(prefixesToRemove):
+    if (op not in keepOps) or name.startswith(prefixesToRemove):
         if op != 'Const':
             removedNodes.append(name)
 
