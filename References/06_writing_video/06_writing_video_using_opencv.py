@@ -28,9 +28,8 @@ from base64 import b64encode
 
 """##  <font style="color:black">Download Assets</font>"""
 
-
 def download_and_unzip(url, save_path):
-    print("Downloading and extracting assests....", end="")
+    print(f"Downloading and extracting assests....", end="")
 
     # Downloading zip file using urllib package.
     urlretrieve(url, save_path)
@@ -46,7 +45,6 @@ def download_and_unzip(url, save_path):
     except Exception as e:
         print("\nInvalid file.", e)
 
-
 URL = r"https://www.dropbox.com/s/p8h7ckeo2dn1jtz/opencv_bootcamp_assets_NB6.zip?dl=1"
 
 asset_zip_path = os.path.join(os.getcwd(), "opencv_bootcamp_assets_NB6.zip")
@@ -57,7 +55,7 @@ if not os.path.exists(asset_zip_path):
 
 """## Read Video from Source"""
 
-source = "race_car.mp4"  # source = 0 for webcam
+source = 'race_car.mp4'  # source = 0 for webcam
 
 cap = cv2.VideoCapture(source)
 
@@ -101,16 +99,9 @@ frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 
 # Define the codec and create VideoWriter object.
-out_avi = cv2.VideoWriter(
-    "race_car_out.avi",
-    cv2.VideoWriter_fourcc("M", "J", "P", "G"),
-    10,
-    (frame_width, frame_height),
-)
+out_avi = cv2.VideoWriter("race_car_out.avi", cv2.VideoWriter_fourcc("M", "J", "P", "G"), 10, (frame_width, frame_height))
 
-out_mp4 = cv2.VideoWriter(
-    "race_car_out.mp4", cv2.VideoWriter_fourcc(*"XVID"), 10, (frame_width, frame_height)
-)
+out_mp4 = cv2.VideoWriter("race_car_out.mp4", cv2.VideoWriter_fourcc(*"XVID"), 10, (frame_width, frame_height))
 
 """### <font color="green">Read frames and write to file</font>
 We will read the frames from the race-car video and write the same to the two objects we created in the previous step. We should release the objects after the task is complete.
@@ -140,9 +131,7 @@ out_mp4.release()
 mp4 = open("/content/race_car_out_x264.mp4", "rb").read()
 data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
 
-HTML(
-    f"""<video width=700 controls><source src="{data_url}" type="video/mp4"></video>"""
-)
+HTML(f"""<video width=700 controls><source src="{data_url}" type="video/mp4"></video>""")
 
 """The video rendered in the above cell should be the same as the following."""
 
