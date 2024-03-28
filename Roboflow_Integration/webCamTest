@@ -1,0 +1,52 @@
+import cv2
+
+# Open webcam (default camera)
+video = cv2.VideoCapture(0)
+
+# Check if the webcam is opened successfully
+if not video.isOpened():
+    print("Error: Unable to open webcam.")
+    exit()
+import cv2
+
+# Open webcam (default camera)
+video = cv2.VideoCapture(0)
+
+# Check if the webcam is opened successfully
+if not video.isOpened():
+    print("Error: Unable to open webcam.")
+    exit()
+
+# Capture an image from the webcam
+ret, frame = video.read()
+
+# Check if the image is captured successfully
+if not ret:
+    print("Error: Unable to capture image from webcam.")
+    exit()
+
+# Function to determine file format based on image data
+def determine_file_format(image_data):
+    # JPEG magic number: 0xFF, 0xD8
+    if image_data[0] == 0xFF and image_data[1] == 0xD8:
+        return "JPEG"
+    # PNG magic number: 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A
+    elif image_data[:8] == b'\x89PNG\x0D\x0A\x1A\x0A':
+        return "PNG"
+    # BMP magic number: 'BM'
+    elif image_data[:2] == b'BM':
+        return "BMP"
+    else:
+        return "Unknown"
+
+# Convert image data to bytes
+image_bytes = cv2.imencode('.jpg', frame)[1].tobytes()
+
+# Determine file format based on image data
+file_format = determine_file_format(image_bytes)
+
+print("File format:", file_format)
+
+# Release webcam and close window
+video.release()
+cv2.destroyAllWindows()
