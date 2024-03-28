@@ -25,15 +25,24 @@ while True:
     # Parse the inference results
     predictions = result['predictions']
 
-    # Visualize the annotated image
     for prediction in predictions:
         # Extract prediction information
+        print(prediction)
         class_name = prediction['class']
-        x_min, y_min, x_max, y_max = prediction['boundingBox']
+        x, y = int(prediction['x']), int(prediction['y'])
+        print(x,y)
+        width, height = int(prediction['width']), int(prediction['height'])
+        print(width,height)
+        confidence = int(prediction['confidence'])
+        print(confidence)
 
         # Draw bounding box on the image
-        cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
-        cv2.putText(img, class_name, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+        topLeft = (int(x-width/2),int(y+height/2))
+        print(topLeft)
+        bottomRight = (int(x+width/2),int(y-height/2))
+        print(bottomRight)
+        cv2.rectangle(img, topLeft, bottomRight, (0, 255, 0), 2)
+        cv2.putText(img, class_name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
     # Display the annotated image
     cv2.imshow('Annotated Image', img)
