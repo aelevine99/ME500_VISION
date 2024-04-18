@@ -1,6 +1,5 @@
 import cv2
-from picamera import PiCamera
-from time import sleep
+import subprocess
 from inference_sdk import InferenceHTTPClient
 
 # Initialize the client
@@ -12,13 +11,13 @@ CLIENT = InferenceHTTPClient(
 # Main loop; infers sequentially until you press "q"
 while True:
     # On "q" keypress, exit
-    if cv2.waitKey(1) == ord('q'):
-        break
+    def signal_handler(sig, frame):
+        print("Ctrl+C detected. Exiting...")
+        exit(0)
 
     # Get the current image from the webcam
-    camera = PiCamera()
-    sleep(2)
-    img = camera.capture('/fdmVision/image.jpg')
+    subprocess.run(["fswebcam", "-r", "1280x720", "--jpeg", "100", "--save", "/home/me500/fdmVision/image.jpg"])
+    img = cv2.imread("/home/me500/fdmVision/image.jpg")
 
     # Perform inference using the Roboflow Infer API
     result = CLIENT.infer(img, model_id="fdm-failures-spaghetti/1")
@@ -45,6 +44,6 @@ while True:
         cv2.rectangle(img, topLeft, bottomRight, (0, 255, 0), 2)
         cv2.putText(img, class_name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-        annotatedImagePath = "/fdmVision/annotated_image.jpg"
+        annotatedImagePath = "/home/me500/fdmVision/annotated_image.jpg"
         cv2.imwrite(annotatedImagePath,img)
-        break
+        exit(0)
