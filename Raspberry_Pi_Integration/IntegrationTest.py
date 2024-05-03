@@ -9,6 +9,7 @@ from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
+from google.oauth2.credentials import Credentials
 
 import google.auth
 from googleapiclient.discovery import build
@@ -68,7 +69,9 @@ while True:
             TODO(developer) - See https://developers.google.com/identity
             for guides on implementing OAuth2 for the application.
             """
-            creds, _ = google.auth.default()
+            
+            credsFile = "fdmVision/credentials.json"
+            creds, _ = Credentials.from_authorized_user_file(credsFile)
 
             try:
                 # create gmail api client
