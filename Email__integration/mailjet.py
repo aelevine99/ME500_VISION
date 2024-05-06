@@ -1,11 +1,14 @@
 from mailjet_rest import Client
 import os
 
-os.environ['MJ_APIKEY_PUBLIC'] = '7f4057a65d47712d6b513b7a15c17789'
-os.environ['MJ_APIKEY_PRIVATE'] = '63548e7a89bff43c762146098dd12b87'
+#Get api keys from file which creates environmental vars
+execfile("keys.py")
+
+#Grab key values from env vars
 api_key = os.environ['MJ_APIKEY_PUBLIC']
 api_secret = os.environ['MJ_APIKEY_PRIVATE']
 
+#Create email object
 mailjet = Client(auth=(api_key, api_secret), version='v3.1')
 
 data = {
@@ -27,6 +30,8 @@ data = {
     }
   ]
 }
+
+#Send email, print debug stuff
 result = mailjet.send.create(data=data)
 print(result.status_code)
 print(result.json())
