@@ -1,3 +1,5 @@
+#This script runs inference on one local image. We used this to test and learn how to run inference on images.
+
 import roboflow
 
 rf = roboflow.Roboflow(api_key="wUU8rX5LcogWMC67u43g")
