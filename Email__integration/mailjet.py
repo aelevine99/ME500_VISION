@@ -1,3 +1,6 @@
+#This is the script we used to create and send an email object to the user's email address. This still needs to create an attachment and pull an image from 
+#the directory for this to be applicable. This will only be used in the final application to notify the user.
+
 from mailjet_rest import Client
 import os
 
