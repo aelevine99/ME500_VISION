@@ -1,3 +1,5 @@
+#Use this code block as a reference for developing a plugin for a printer. This model successfully calls the Roboflow API to perform inference on sequential images.
+
 import cv2
 import subprocess
 from inference_sdk import InferenceHTTPClient
