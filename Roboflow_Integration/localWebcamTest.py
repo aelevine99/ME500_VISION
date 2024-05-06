@@ -1,3 +1,5 @@
+#This code calls the local webcam and runs inference sequentially on the images from the webcam. This was our next step after running inference locally on one image.
+
 import cv2
 from inference_sdk import InferenceHTTPClient
 
