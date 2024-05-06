@@ -1,3 +1,6 @@
+#This code is an extension of rasPiTest.py
+#It unsuccessfully calls the GMail API to send an email to notify the user of failed prints.
+
 import os.path
 import cv2
 import subprocess
