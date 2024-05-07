@@ -6,7 +6,7 @@ Overall, we hope this application can detect, pause or stop a failed print, and 
 ## Documentation
 
 ### Roboflow Models
-[Roboflow “FDM Failures” Model](https://universe.roboflow.com/bu-engme500-vision-project/fdm-failures-spaghetti)
+[Roboflow “FDM Failures” Model](https://universe.roboflow.com/bu-engme500-vision-project/fdm-failures-spaghetti) 
 [Deployment Instructions](https://inference.roboflow.com/inference_helpers/inference_sdk/)
 
 ## File Organization and Helpful Links
