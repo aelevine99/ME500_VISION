@@ -29,6 +29,7 @@ To transfer files between our computers and the Raspberry Pi remotely, we used F
 Also, here are some YouTube videos that helped us immensely in understanding how to work with computer vision models on the RasPi:
 
 [Beginner Tutorial: How to Stream Video from Raspberry Pi Camera to Computer using Python (P2)](https://www.youtube.com/watch?v=p4L3g9Grl3k)
+
 [How to Deploy Computer Vision Models to Raspberry Pi with Docker](https://www.youtube.com/watch?v=S-Ga_uxnRZA)
 
 Lastly, we have Email Integration. In this folder, we used MailJet API (documentation linked [here](https://github.com/mailjet/mailjet-apiv3-python)) to send and receive emails. We attempted to use the GMail API but ran into several issues when it came to authentication (most notably in IntegrationTest.py) However if you want to learn more about or use the GMail API authentication process, see the link [here](https://github.com/googleapis/google-api-python-client/blob/main/docs/oauth.md). Ideally, the user would receive an email with an attachment including the annotated image of their failed print. However, what we have currently sends an email with the necessary objects (To, From, Body). 
