@@ -15,6 +15,7 @@ Overall, we hope this application can detect, pause or stop a failed print, and 
 Four folders show our journey through this project: References, Roboflow_Integration, Raspberry Pi Integration, and Email_Integration. The References folder gives the scripts from an OpenCV Bootcamp that is linked [here](https://courses.opencv.org/courses/course-v1:OpenCV+Bootcamp+CV0/course/). Going through this was pretty helpful when it came to relearning Python and getting up to speed with OpenCV's image-processing capabilities even though it is used pretty sparsely in our scripts. The Roboflow Integration folder contains the scripts that we used to familiarize ourselves with the Roboflow API and how we integrated it into our application. You should be provided links and files to the models we have trained along with the annotated images along with them. Here are some links that we've found helpful and are a good introduction to the platform as well: 
 
 [Deploy your Roboflow Train models to Raspberry Pi.](https://docs.roboflow.com/deploy/legacy-documentation/raspberry-pi)
+
 [Roboflow Documentation](https://docs.roboflow.com/)
 
 Next, we used a Raspberry Pi 4 to run our application. To use your time efficiently, ensure that you are familiar with how code is executed on a Raspberry Pi (i.e. using virtual environments, how to install necessary libraries, etc.)
